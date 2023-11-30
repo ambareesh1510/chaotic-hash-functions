@@ -12,8 +12,8 @@ int comparator(const void *a, const void *b) {
 }
 
 void benchmark(const char *name, unsigned int (*hash)(const char *)) {
-    srand(time(NULL));
-    // srandom(19999);
+    // srand(time(NULL));
+    srand(1000);
 
     unsigned int hashes[NUM_TESTS];
     int deviations[NUM_TESTS];
@@ -24,21 +24,25 @@ void benchmark(const char *name, unsigned int (*hash)(const char *)) {
     for (int i = 0; i < NUM_TESTS; i++) {
         // Generate hash distribution
         unsigned int test_string_length = 
-            (unsigned long long) rand() * 128 / RAND_MAX;
+            (rand() % 128) + 10;
+            // (unsigned long long) rand() * 128 / RAND_MAX + 1;
 
         char *new_test_string = malloc(test_string_length + 1);
 
         for (int j = 0; j < test_string_length; j++) {
             new_test_string[j] =
-                (unsigned long long) rand() * (126 - 32) / RAND_MAX + 32;
+                (char) ((unsigned long long) rand() * (126 - 32) / RAND_MAX + 32);
         }
 
         hashes[i] = hash(new_test_string);
+        if (hashes[i] == 0) {
+            printf("test string that collides: (%s) with length %u\n", new_test_string, test_string_length);
+        }
 
 
         // Generate deviation distribution
         unsigned int random_modification =
-            (unsigned long long) rand() * test_string_length / RAND_MAX;
+            (unsigned long long) rand() * test_string_length / RAND_MAX + 1;
 
         if (rand() > RAND_MAX / 2) {
             new_test_string[random_modification] += 1;
@@ -61,7 +65,7 @@ void benchmark(const char *name, unsigned int (*hash)(const char *)) {
         } else {
             if (hashes[i] == hashes[i + 1]) {
                 collisions++;
-                // if (strcmp(name, "benchmark_data_rolling_hash.csv") == 0) printf("%u\n", hashes[i]);
+                if (strcmp(name, "benchmark_data_rolling_hash.csv") == 0) printf("rolling hash collision! %u\n", hashes[i]);
             }
             fprintf(benchmark_data, "%u,", hashes[i]);
         }

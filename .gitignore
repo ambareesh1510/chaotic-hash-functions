@@ -1,3 +1,4 @@
 src/bin/*
 src/*.csv
 src/analysis/.ipynb_checkpoints/*
+src/vgcore.*

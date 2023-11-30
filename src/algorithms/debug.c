@@ -3,7 +3,7 @@
 #include "hashes.h"
 
 const char* TEST_STRING_1 = "asdfqwer";
-const char* TEST_STRING_2 = "asdfqwgr";
+const char* TEST_STRING_2 = "asdfqwfr";
 const char* TEST_STRING_3 = "asdfqwer.";
 // const char* TEST_STRING_1 = "The quick brown fox jumps over the lazy dog";
 // const char* TEST_STRING_2 = "The quick brown fox jumps over the lazy dig";
