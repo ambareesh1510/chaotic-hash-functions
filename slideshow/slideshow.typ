@@ -120,7 +120,7 @@
     #image("img/rolling_hash_deviation.png", width: 90%)
     ]
     #align(center)[
-    Collision percentage: 1.533%
+    Collision percentage: 0.003%
     ]
   ]
 ]
@@ -161,7 +161,7 @@ unsigned int tent_map_hash(char *n) {
     #image("img/tent_map_hash_deviation.png", width: 90%)
     ]
     #align(center)[
-    Collision percentage: 1.536%
+    Collision percentage: 0.001%
     ]
   ]
 ]
@@ -202,7 +202,7 @@ unsigned int dyadic_map_hash(char *n) {
     #image("img/dyadic_map_hash_deviation.png", width: 90%)
     ]
     #align(center)[
-    Collision percentage: 1.534%
+    Collision percentage: 0.002%
     ]
   ]
 ]
@@ -284,7 +284,7 @@ unsigned int dyadic_map_hash(char *n) {
     #image("img/multi_state_hash_deviation.png", width: 90%)
     ]
     #align(center)[
-    Collision percentage: 1.227%
+    Collision percentage: 1.162%
     ]
   ]
 ]
@@ -310,12 +310,12 @@ unsigned int dyadic_map_hash(char *n) {
       - Collision resistance
   ]
   ]
-  #only("7-")[
+]
 
-    Potential future research:
-      - Why does the hash distribution of the rolling hash have such a significant peak?
-      - How can collision resistance for the multi-state hash be improved?
-  ]
+#polylux-slide[
+  = Potential future research:
+    - How can collision resistance for the multi-state hash be improved?
+    - How much padding is really necessary for the multi-state hash to be effective?
 ]
 
 #polylux-slide[
